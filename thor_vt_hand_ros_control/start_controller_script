@@ -1,0 +1,24 @@
+#!/bin/bash
+# $0 is the script name, $1 id the first ARG, $2 is second...
+
+if [ "$1" = "" ]
+then
+  echo "Usage: $0 <controller_name>"
+else
+  CONTROLLER="$1"
+
+  echo "Starting: $1"
+
+  sleep 10
+
+  command="rosservice call --wait /thor_mang/controller_manager/switch_controller \"{start_controllers: ['${CONTROLLER}'], stop_controllers: [], strictness: 1}\""
+
+  echo $command
+  
+  eval $command
+fi
+
+
+
+
+

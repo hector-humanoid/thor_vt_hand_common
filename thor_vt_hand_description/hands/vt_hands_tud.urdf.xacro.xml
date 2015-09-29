@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+
+<robot name="vt_hand_tud" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find thor_vt_hand_description)/urdf/vt_hand_tud.urdf.xacro.xml" />
+  
+  <macro name="vt_hands_tud_macro">
+  
+  <vt_hand_tud_macro parent="l_hand" prefix="l" reflect="-1" >
+    <origin xyz="0 0 0" rpy="3.14159 0 0"/>
+  </vt_hand_tud_macro>
+  
+  <vt_hand_tud_macro parent="r_hand" prefix="r" reflect="1" >
+    <origin xyz="0 0 0" rpy="3.14159 0 3.14159"/>
+  </vt_hand_tud_macro>
+
+  </macro>
+      
+</robot>
