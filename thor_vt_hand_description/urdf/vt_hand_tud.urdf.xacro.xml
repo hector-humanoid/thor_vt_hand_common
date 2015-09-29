@@ -44,6 +44,18 @@
                 <inertia ixx="0.1e-04" ixy="0" ixz="0" iyy="0.07e-04" iyz="0" izz="0.1e-04" />
         </inertial>
     </link>
+    
+   <gazebo reference="${prefix}_palm">
+      <mu1>1.1</mu1>
+      <mu2>1.1</mu2>
+      <kp>1000000.0</kp>
+      <kd>1.0</kd>
+      <maxVel>0.1</maxVel>
+      <minDepth>0.00</minDepth>
+      <maxContacts>6</maxContacts>
+      <!--<material>Gazebo/FlatBlack</material>-->
+    </gazebo>
+    
     <!-- end of link list -->
     <!-- joint list -->
 
