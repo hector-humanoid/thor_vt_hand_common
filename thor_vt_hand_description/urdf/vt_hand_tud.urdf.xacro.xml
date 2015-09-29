@@ -52,7 +52,7 @@
       <child link="${prefix}_f1_link_0"/>
       <axis xyz="1 0 0"/>
       <origin xyz="${reflect*0.036} 0.0361 0.0596" rpy="-1.315 0 0"/>
-      <limit lower="0" upper="2.685" effort="100" velocity="100"/>
+      <limit lower="0" upper="2.685" effort="10" velocity="10"/>
       <!--<dynamics damping="0.1"/>-->
     </joint>
     <joint name="${prefix}_f0_j0" type="revolute">
@@ -60,7 +60,7 @@
       <child link="${prefix}_f0_link_0"/>
       <axis xyz="1 0 0"/>
       <origin xyz="${reflect*-0.0355} 0.0361 0.0596" rpy="-1.315 0 0"/>
-      <limit lower="0" upper="2.685" effort="100" velocity="100"/>
+      <limit lower="0" upper="2.685" effort="10" velocity="10"/>
       <!--<dynamics damping="0.1"/>-->
     </joint>
     <!-- end of joint list -->
