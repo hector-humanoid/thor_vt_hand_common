@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="thor_mang_hands">
-  <xacro:include filename="$(find thor_vt_hand_description)/urdf/vt_finger_tud.urdf.xacro"/>
+  <!--<xacro:include filename="$(find thor_vt_hand_description)/urdf/vt_finger_tud.urdf.xacro"/>-->
+  <xacro:include filename="$(find thor_vt_hand_description)/urdf/vt_finger_tud_single_link.urdf.xacro"/>
   <xacro:include filename="$(find thor_mang_description)/urdf/helper_macros.urdf.xacro.xml"/>
   <macro name="vt_hand_tud_macro" params="parent prefix reflect *origin">
     <xacro:vt_finger_tud_macro prefix="${prefix}_f1" reflect="${reflect*(-1)}"/>
