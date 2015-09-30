@@ -13,9 +13,9 @@
     <!--SUBGROUPS: Groups can also be formed by referencing to already defined group names-->
     <group name="$(arg name_short)_hand_group">
         <joint name="$(arg name_short)_f0_j0" />
-        <joint name="$(arg name_short)_f0_j1" />
+		<!--<joint name="$(arg name_short)_f0_j1" />-->
         <joint name="$(arg name_short)_f1_j0" />
-        <joint name="$(arg name_short)_f1_j1" />
+		<!--<joint name="$(arg name_short)_f1_j1" />-->
     </group>
     <!--VIRTUAL JOINT: Purpose: this element defines a virtual joint between a robot link and an external frame of reference (considered fixed with respect to the robot)-->
     <virtual_joint name="world_virtual_joint" type="floating" parent_frame="world" child_link="$(arg name_short)_hand" />
