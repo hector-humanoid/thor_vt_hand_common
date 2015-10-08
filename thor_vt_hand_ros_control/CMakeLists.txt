@@ -10,7 +10,6 @@ find_package(catkin REQUIRED COMPONENTS
   controller_manager
   dynamic_reconfigure
   hardware_interface
-  robot_transforms
   roscpp
   rospy
   std_msgs
@@ -88,7 +87,7 @@ find_package(catkin REQUIRED COMPONENTS
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES thor_vt_hand_ros_control
-#  CATKIN_DEPENDS actionlib actionlib_msgs controller_manager dynamic_reconfigure hardware_interface robot_transforms roscpp rospy std_msgs
+#  CATKIN_DEPENDS actionlib actionlib_msgs controller_manager dynamic_reconfigure hardware_interface roscpp rospy std_msgs
 #  DEPENDS system_lib
 )
 
