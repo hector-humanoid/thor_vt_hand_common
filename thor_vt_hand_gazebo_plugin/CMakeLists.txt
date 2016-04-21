@@ -15,6 +15,7 @@ find_package(catkin REQUIRED COMPONENTS
 
 set(CMAKE_CXX_FLAGS "-std=c++11 ${CMAKE_CXX_FLAGS}")
 
+
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
 
@@ -86,7 +87,7 @@ set(CMAKE_CXX_FLAGS "-std=c++11 ${CMAKE_CXX_FLAGS}")
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
   INCLUDE_DIRS include
-#  LIBRARIES thor_vt_hand_gazebo_plugin
+  LIBRARIES THOR_VT_HandPlugin
   CATKIN_DEPENDS   roscpp rospy std_msgs gazebo_plugins vigir_grasp_msgs sensor_msgs
 #  DEPENDS system_lib
 )
@@ -101,7 +102,6 @@ find_package(gazebo REQUIRED)
 ## Your package locations should be listed before other locations
 # include_directories(include)
 include_directories(
-  ${PROJECT_SOURCE_DIR}/include
   include
   ${catkin_INCLUDE_DIRS}
   ${GAZEBO_INCLUDE_DIRS}
@@ -112,7 +112,10 @@ link_directories(
 )
 
 ## Declare a cpp library
-add_library(THOR_VT_HandPlugin src/THOR_VT_HandPlugin.cpp)
+add_library(THOR_VT_HandPlugin
+  include/${PROJECT_NAME}/thor_vt_hand_plugin.h
+  src/thor_vt_hand_plugin.cpp
+)
 target_link_libraries(THOR_VT_HandPlugin ${catkin_LIBRARIES})
 add_dependencies(THOR_VT_HandPlugin osrf_msgs_gencpp)
 add_dependencies(THOR_VT_HandPlugin vigir_grasp_msgs_generate_messages_cpp)

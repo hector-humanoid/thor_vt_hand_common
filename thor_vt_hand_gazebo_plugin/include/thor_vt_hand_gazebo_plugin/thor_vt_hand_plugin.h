@@ -75,6 +75,14 @@ namespace gazebo
 	private: std::string side;
 	private: std::string prefix;
 
+  			/// \brief Velocity tolerance. Below this value we assume that the joint is
+  			/// stopped (rad/s).
+  private: static constexpr double VelTolerance = 0.002;
+
+  			/// \brief Position tolerance. If the difference between target position and
+  			/// current position is within this value we'll conclude that the joint
+ 			 /// reached its target (rad).
+  private: static constexpr double PoseTolerance = 0.002;
 			 /// Pointer to the update event connections
 	private: event::ConnectionPtr updateConnection;
 

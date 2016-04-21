@@ -2,7 +2,7 @@
 #include <vector>
 
 #include <gazebo/transport/Node.hh>
-#include "THOR_VT_HandPlugin.h"
+#include <thor_vt_hand_gazebo_plugin/thor_vt_hand_plugin.h>
 
 static bool wasMoving[2] = {false,false};
 static bool underactuating[2] = {false,false};
