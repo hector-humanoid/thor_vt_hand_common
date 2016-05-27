@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+
+<robot  name="vt_hand_macros" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  
+  <xacro:macro name="joint_transmission_macro" params="joint_name">
+    <transmission name="${joint_name}_transmssion">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="${joint_name}">
+        <hardwareInterface>EffortJointInterface</hardwareInterface>
+      </joint>  
+      <actuator name="${joint_name}_motor">
+        <hardwareInterface>EffortJointInterface</hardwareInterface>
+        <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+    </transmission>
+    <gazebo reference="${joint_name}">
+      <implicitSpringDamper>1</implicitSpringDamper>
+    </gazebo>
+  </xacro:macro>
+  
+  <xacro:macro name="inertial_cuboid_macro" params="mass x_length y_length z_length">
+    <inertial>
+      <mass value="${mass}" />
+      <origin xyz="0 0 0" />
+      <inertia ixx="${(1/12) * mass* (y_length*y_length+ z_length*z_length)}" ixy="0.0" ixz="0.0"
+               iyy="${(1/12) * mass* (x_length*x_length+ z_length*z_length)}" iyz="0.0"
+               izz="${(1/12) * mass* (x_length*x_length+ y_length*y_length)}" />
+    </inertial>
+  </xacro:macro>
+  
+  <xacro:macro name="inertial_cuboid__with_pose_macro" params="mass x_length y_length z_length *origin">
+    <inertial>
+      <insert_block name="origin"/>
+      <mass value="${mass}" />
+      <inertia ixx="${(1/12) * mass* (y_length*y_length+ z_length*z_length)}" ixy="0.0" ixz="0.0"
+               iyy="${(1/12) * mass* (x_length*x_length+ z_length*z_length)}" iyz="0.0"
+               izz="${(1/12) * mass* (x_length*x_length+ y_length*y_length)}" />
+    </inertial>
+  </xacro:macro>
+
+  <xacro:macro name="inertial_sphere_macro" params="mass diameter">
+    <inertial>
+      <mass value="${mass}" />
+      <origin xyz="0 0 0" />
+      <inertia ixx="${(2/5) * mass* ( (diameter*0.5)) * (diameter*0.5))}" ixy="0.0" ixz="0.0"
+               iyy="${(2/5) * mass* ( (diameter*0.5)) * (diameter*0.5))}" iyz="0.0"
+               izz="${(2/5) * mass* ( (diameter*0.5)) * (diameter*0.5))}" />
+    </inertial>
+  </xacro:macro>
+  
+  <xacro:macro name="inertial_sphere_with_pose_macro" params="mass diameter *origin">
+    <inertial>
+      <insert_block name="origin"/>
+      <mass value="${mass}" />
+      <inertia ixx="${(2/5) * mass* ( (diameter*0.5)) * (diameter*0.5))}" ixy="0.0" ixz="0.0"
+               iyy="${(2/5) * mass* ( (diameter*0.5)) * (diameter*0.5))}" iyz="0.0"
+               izz="${(2/5) * mass* ( (diameter*0.5)) * (diameter*0.5))}" />
+    </inertial>
+  </xacro:macro>
+  
+  <xacro:macro name="set_gazebo_robot_default_color_macro" params="link_name">
+<!--    <gazebo reference="${link_name}">
+      <material>Gazebo/White</material>
+    </gazebo>-->
+  </xacro:macro>
+
+  <!-- Increased effort limit by x10 for gazebo -->
+  <xacro:macro name="joint_small_servo_limits_macro" params="lower upper">
+    <limit effort="50.596" lower="${lower}" upper="${upper}" velocity="1.4"/>
+    <dynamics damping="${DAMPING}" friction="${FRICTION}"/>
+  </xacro:macro>    
+  
+  <xacro:macro name="joint_medium_servo_limits_macro" params="lower upper">
+    <limit effort="210.142" lower="${lower}" upper="${upper}" velocity="2.5"/>
+    <dynamics damping="${DAMPING}" friction="${FRICTION}"/>
+  </xacro:macro>    
+
+  <xacro:macro name="joint_large_servo_limits_macro" params="lower upper">
+    <limit effort="390.131" lower="${lower}" upper="${upper}" velocity="2.5"/>
+    <dynamics damping="${DAMPING}" friction="${FRICTION}"/>
+  </xacro:macro>    
+
+</robot>
+
