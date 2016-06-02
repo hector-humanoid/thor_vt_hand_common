@@ -88,6 +88,8 @@ catkin_package(
 #  DEPENDS system_lib
 )
 
+catkin_add_env_hooks(10.thor_vt_hand SHELLS sh)
+
 ###########
 ## Build ##
 ###########
