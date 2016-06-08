@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+
+<launch>
+  <arg name="robot_name" default="thormang3" />
+
+  <group ns="/gazebo/$(arg robot_name)">
+
+    <!-- Load joint controller configurations from YAML file to parameter server -->
+    <rosparam file="$(find thor_vt_hand_ros_control)/config/vt_hand_right_gazebo_controllers.yaml" command="load" />
+
+    <!-- load the controllers -->
+    <node name="right_hand_pos_controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+	output="screen" args="r_f0_j0_pos r_f1_j0_pos" />
+  </group>
+</launch>

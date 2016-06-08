@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 
 <launch>
-  <arg name="namespace" default="/thor_mang"/>
+  <arg name="namespace" default="/johnny5"/>
 
   <node name    = "left_rosparam_append_node"
         pkg     = "thor_vt_hand_ros_control"
         type    = "rosparam_append"
-        args    = "$(find thor_vt_hand_ros_control)/config/vt_hand_left_controllers.yaml  $(arg namespace)/controller_list"/>
+        args    = "$(find thor_vt_hand_ros_control)/config/vt_hand_left_controllers.yaml  /move_group/controller_list"/>
 
   <!-- load trajectory controllers -->
   <node name="trajectory_controller_left_hand_spawner"  pkg="controller_manager" type="spawner" ns="$(arg namespace)" respawn="false" output="screen"
