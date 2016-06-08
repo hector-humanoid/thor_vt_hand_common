@@ -11,7 +11,7 @@ else
 
   sleep 10
 
-  command="rosservice call --wait /thor_mang/controller_manager/switch_controller \"{start_controllers: ['${CONTROLLER}'], stop_controllers: [], strictness: 1}\""
+  command="rosservice call --wait /gazebo/johnny5/joints/controller_manager/switch_controller \"{start_controllers: ['${CONTROLLER}'], stop_controllers: [], strictness: 1}\""
 
   echo $command
   
