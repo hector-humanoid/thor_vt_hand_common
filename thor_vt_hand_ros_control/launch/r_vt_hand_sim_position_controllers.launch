@@ -15,13 +15,7 @@
   <node name    = "start_r_f0_j0_position_controller"
         pkg     = "thor_vt_hand_ros_control"
         type    = "start_controller_script"
-        args    = "r_f0_j0_pos" /><!--
-        output  = "screen"    />-->
-
-  <node name    = "start_r_f1_j0_position_controller"
-        pkg     = "thor_vt_hand_ros_control"
-        type    = "start_controller_script"
-        args    = "r_f1_j0_pos" /><!--
+        args    = "/gazebo/johnny5/joints 2 r_f0_j0_pos r_f1_j0_pos" /><!--
         output  = "screen"    />-->
 
 </launch>
