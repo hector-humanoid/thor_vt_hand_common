@@ -7,6 +7,7 @@ then
 else
   dump_command="rosparam dump"
   load_command="rosparam load"
+  anonym=$(( ( RANDOM % 1000 )  + 1 ))
   
   FILE="$1"  
   NAMESPACE="$2"
@@ -21,7 +22,7 @@ else
   else           
 
     #Dumps the current parameters in the server
-    command="$dump_command current.txt $NAMESPACE"
+    command="$dump_command current_$anonym.txt $NAMESPACE"
     eval $command
 
     #Temporarly loads the new parameters
@@ -29,27 +30,27 @@ else
     eval $command
 
     #Dumps the new parameters
-    command="$dump_command new.txt $NAMESPACE"
+    command="$dump_command new_$anonym.txt $NAMESPACE"
     eval $command
 
     #Searching the new parameters in the current ones
-    command="grep -F -f current.txt new.txt > search.txt"
+    command="grep -F -f current_$anonym.txt new_$anonym.txt > search_$anonym.txt"
     eval $command
 
     #Difference berween the new parameters and the search results
-    command="diff new.txt search.txt > diff.txt"
+    command="diff new_$anonym.txt search_$anonym.txt > diff_$anonym.txt"
     eval $command
 
-    if [ -s "diff.txt" ]
+    if [ -s "diff_$anonym.txt" ]
     then
-	echo "Appending new parameters."
+	echo "Appending new parameters, using anonym: $anonym."
         # do something as file has data
 
         #Appends both files
-        cat current.txt >> new.txt
+        cat current_$anonym.txt >> new_$anonym.txt
 
         #Loads all the new parameters
-        command="$load_command new.txt $NAMESPACE"
+        command="$load_command new_$anonym.txt $NAMESPACE"
         eval $command
 
     else
@@ -57,15 +58,15 @@ else
         # do something as file is empty
 
         #Loads all the old parameters
-        command="$load_command current.txt $NAMESPACE"
+        command="$load_command current_$anonym.txt $NAMESPACE"
         eval $command
     fi
 
     #Remove temporary files
-    rm new.txt
-    rm current.txt
-    rm search.txt
-    rm diff.txt
+    rm new_$anonym.txt
+    rm current_$anonym.txt
+    rm search_$anonym.txt
+    rm diff_$anonym.txt
 
   fi
 
