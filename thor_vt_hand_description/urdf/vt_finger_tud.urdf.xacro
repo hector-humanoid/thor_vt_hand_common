@@ -7,8 +7,9 @@ parameters:
 
 -->
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
-  <xacro:include filename="$(find thor_vt_hand_description)/urdf/helper_macros.urdf.xacro.xml"/>
+  <xacro:include filename="$(find hector_xacro_tools)/urdf/inertia_tensors.urdf.xacro" />
   <xacro:include filename="$(find thor_vt_hand_description)/urdf/constants.xacro"/>
+  <xacro:include filename="$(find thor_vt_hand_description)/urdf/helper_macros.urdf.xacro.xml"/>
   <xacro:macro name="vt_finger_tud_macro" params="prefix reflect">
     <!-- link list -->
     <link name="${prefix}_link_0">
@@ -86,9 +87,9 @@ parameters:
                 <inertia ixx="2.35e-06" ixy="${reflect*(-0.12e-06)}" ixz="${reflect*0.08e-06}" iyy="1.16e-06" iyz="-1.0e-06" izz="1.44e-06" />
             </inertial>
             -->
-      <xacro:inertial_cuboid__with_pose_macro mass="0.05" x_length="0.01" y_length="0.015" z_length="0.04">
+      <xacro:inertial_cuboid_with_pose mass="0.05" x_length="0.01" y_length="0.015" z_length="0.04">
         <origin xyz="0.0 0.005 0.02" rpy="0 0 0"/>
-      </xacro:inertial_cuboid__with_pose_macro>
+      </xacro:inertial_cuboid_with_pose>
     </link>
     <gazebo reference="${prefix}_link_1">
       <mu1>1.1</mu1>

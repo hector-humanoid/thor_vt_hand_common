@@ -7,8 +7,8 @@ parameters:
 
 -->
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
-  <xacro:include filename="$(find thor_vt_hand_description)/urdf/helper_macros.urdf.xacro.xml"/>
   <xacro:include filename="$(find thor_vt_hand_description)/urdf/constants.xacro"/>
+  <xacro:include filename="$(find thor_vt_hand_description)/urdf/helper_macros.urdf.xacro.xml"/>
   <xacro:macro name="vt_finger_tud_macro" params="prefix reflect">
     <!-- link list -->
     <link name="${prefix}_link_0">
