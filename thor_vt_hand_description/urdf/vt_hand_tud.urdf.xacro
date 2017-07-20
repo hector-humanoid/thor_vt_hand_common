@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="vt_hands">
-  <xacro:include filename="$(find thor_vt_hand_description)/urdf/helper_macros.urdf.xacro.xml"/>
+  <xacro:include filename="$(find thor_vt_hand_description)/urdf/helper_macros.urdf.xacro"/>
   <!--<xacro:include filename="$(find thor_vt_hand_description)/urdf/vt_finger_tud.urdf.xacro"/>-->
   <xacro:include filename="$(find thor_vt_hand_description)/urdf/vt_finger_tud_single_link.urdf.xacro"/>
 
