@@ -9,9 +9,9 @@
 
     <!-- load the controllers -->
     <node name="right_hand_pos_controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen"
-      args="--stopped r_f0_j0_pos r_f1_j0_pos
+      args="--stopped r_f0_j0_position r_f1_j0_position
             --shutdown-timeout 3" />
 
-    <node name="start_r_f0_j0_position_controller" pkg="thor_vt_hand_ros_control" type="start_controller_script" args="/gazebo/$(arg robot_name)/joints 2 r_f0_j0_pos r_f1_j0_pos" />
+    <node name="start_r_f0_j0_position_controller" pkg="thor_vt_hand_ros_control" type="start_controller_script" args="/gazebo/$(arg robot_name)/joints 2 r_f0_j0_position r_f1_j0_position" />
   </group>
 </launch>

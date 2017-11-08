@@ -4,6 +4,9 @@
   <!--<xacro:include filename="$(find thor_vt_hand_description)/urdf/vt_finger_tud.urdf.xacro"/>-->
   <xacro:include filename="$(find thor_vt_hand_description)/urdf/vt_finger_tud_single_link.urdf.xacro"/>
 
+  <xacro:property name="joint_friction" value="0.1" />
+  <xacro:property name="joint_damping" value="0.0" />
+
   <xacro:macro name="vt_hand_tud_macro" params="parent prefix reflect *origin">
     <xacro:vt_finger_tud_macro prefix="${prefix}_f1" reflect="${reflect*(-1)}"/>
     <xacro:vt_finger_tud_macro prefix="${prefix}_f0" reflect="${reflect}"/>
@@ -55,7 +58,7 @@
       <axis xyz="1 0 0"/>
       <origin xyz="${reflect*0.036} 0.0361 0.0596" rpy="-1.315 0 0"/>
       <limit lower="0" upper="2.685" effort="10" velocity="10"/>
-      <!--<dynamics damping="0.1"/>-->
+      <dynamics friction="${joint_friction}" damping="${joint_damping}" />
     </joint>
     <joint name="${prefix}_f0_j0" type="revolute">
       <parent link="${prefix}_palm"/>
@@ -63,7 +66,7 @@
       <axis xyz="1 0 0"/>
       <origin xyz="${reflect*-0.0355} 0.0361 0.0596" rpy="-1.315 0 0"/>
       <limit lower="0" upper="2.685" effort="10" velocity="10"/>
-      <!--<dynamics damping="0.1"/>-->
+      <dynamics friction="${joint_friction}" damping="${joint_damping}" />
     </joint>
     <!-- end of joint list -->
     <!--<gazebo>
