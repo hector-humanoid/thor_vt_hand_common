@@ -7,8 +7,7 @@
 
     <!-- load trajectory controllers -->
     <node name="trajectory_controller_right_hand_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen"
-      args="right_hand_traj_controller
-            --shutdown-timeout 3" />
+      args="right_hand_traj_controller" />
   </group>
 </launch>
 
