@@ -3,16 +3,14 @@
 <launch>
   <arg name="robot_name" default="thormang3" />
 
-  <group ns="joints">
-    <!-- Load joint controller configurations from YAML file to parameter server -->
-    <rosparam file="$(find thor_vt_hand_ros_control)/config/vt_hand_right_gazebo_controllers.yaml" command="load" />
+  <!-- Load joint controller configurations from YAML file to parameter server -->
+  <rosparam file="$(find thor_vt_hand_ros_control)/config/vt_hand_right_gazebo_controllers.yaml" command="load" />
 
-    <!-- load the controllers -->
-    <node name="right_hand_pos_controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen"
-      args="--stopped
-            r_f0_j0_position
-            r_f1_j0_position" />
+  <!-- load the controllers -->
+  <node name="right_hand_pos_controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen"
+    args="--stopped
+          r_f0_j0_position
+          r_f1_j0_position" />
 
-    <node name="start_r_f0_j0_position_controller" pkg="thor_vt_hand_ros_control" type="start_controller_script" args="/gazebo/$(arg robot_name)/joints 2 r_f0_j0_position r_f1_j0_position" />
-  </group>
+  <node name="start_r_f0_j0_position_controller" pkg="thor_vt_hand_ros_control" type="start_controller_script" args="/gazebo/$(arg robot_name)/joints 2 r_f0_j0_position r_f1_j0_position" />
 </launch>
