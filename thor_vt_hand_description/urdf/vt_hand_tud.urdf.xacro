@@ -10,11 +10,13 @@
   <xacro:macro name="vt_hand_tud_macro" params="parent prefix reflect *origin">
     <xacro:vt_finger_tud_macro prefix="${prefix}_f1" reflect="${reflect*(-1)}"/>
     <xacro:vt_finger_tud_macro prefix="${prefix}_f0" reflect="${reflect}"/>
+
     <joint name="${prefix}_vt_hand_joint" type="fixed">
       <xacro:insert_block name="origin"/>
       <parent link="${parent}"/>
       <child link="${prefix}_palm"/>
     </joint>
+
     <!-- link list -->
     <link name="${prefix}_palm">
       <visual>
@@ -40,6 +42,7 @@
         <inertia ixx="0.1e-04" ixy="0" ixz="0" iyy="0.07e-04" iyz="0" izz="0.1e-04"/>
       </inertial>
     </link>
+
     <gazebo reference="${prefix}_palm">
       <mu1>1.1</mu1>
       <mu2>1.1</mu2>
@@ -50,6 +53,7 @@
       <maxContacts>6</maxContacts>
       <!--<material>Gazebo/FlatBlack</material>-->
     </gazebo>
+
     <!-- end of link list -->
     <!-- joint list -->
     <joint name="${prefix}_f1_j0" type="revolute">
@@ -60,6 +64,7 @@
       <limit lower="0" upper="2.685" effort="10" velocity="10"/>
       <dynamics friction="${joint_friction}" damping="${joint_damping}" />
     </joint>
+
     <joint name="${prefix}_f0_j0" type="revolute">
       <parent link="${prefix}_palm"/>
       <child link="${prefix}_f0_link_0"/>
@@ -69,6 +74,7 @@
       <dynamics friction="${joint_friction}" damping="${joint_damping}" />
     </joint>
     <!-- end of joint list -->
+
     <!--<gazebo>
         <plugin name="THOR_VT_HandPlugin" filename="libTHOR_VT_HandPlugin.so">
 		<prefix>${prefix}</prefix>
@@ -92,5 +98,6 @@
       <robotSimType>gazebo_ros_control/VT_Hand_HWSim</robotSimType>
     </plugin>
   </gazebo-->
+
   </xacro:macro>
 </robot>

@@ -1,4 +1,3 @@
-# VT Hand --------------------------------------------------
   left_hand_traj_controller:
     type: "position_controllers/JointTrajectoryController"
     joints:

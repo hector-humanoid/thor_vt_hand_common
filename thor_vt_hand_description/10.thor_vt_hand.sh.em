@@ -1,2 +1,3 @@
 #!/bin/sh
-export USE_HANDS=true
+export L_HAND_TYPE="vt_hand"
+export R_HAND_TYPE="vt_hand"
